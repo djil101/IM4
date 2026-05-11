@@ -152,7 +152,6 @@ body.dashboard-page {
 
 .dashboard {
   width: 100%;
-  max-width: 520px;
   padding: 36px 20px 110px;
 }
 
@@ -386,3 +385,621 @@ body.dashboard-page {
 .nav-item.active {
   color: #5aabe0;
 }
+
+@media (min-width: 768px) {
+  .dashboard {
+    padding: 48px 48px 110px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 16px;
+  }
+
+  .greeting-section {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .hero-card {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  .info-card {
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  .action-grid {
+    grid-column: 1;
+    grid-row: 3;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-card {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 20px 24px;
+    gap: 20px;
+  }
+
+  .action-label {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .sensor-card {
+    grid-column: 2;
+    grid-row: 3;
+    margin-bottom: 0;
+  }
+
+  .logout-btn {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+}
+
+/* ═══════════════════════════════════════
+   Wachzeiten Page
+   ═══════════════════════════════════════ */
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e2d3d;
+  margin-bottom: 4px;
+}
+
+.page-sub {
+  font-size: 16px;
+  color: #6b7f8e;
+}
+
+/* ── Weekly card ── */
+.weekly-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.weekly-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e2d3d;
+  margin-bottom: 2px;
+}
+
+.weekly-sublabel {
+  font-size: 13px;
+  color: #6b7f8e;
+  margin-bottom: 16px;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.week-time {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e2d3d;
+}
+
+.week-name {
+  font-size: 13px;
+  color: #6b7f8e;
+}
+
+/* ── Stat grid ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 16px;
+  text-align: center;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e2d3d;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6b7f8e;
+}
+
+/* ── Event cards ── */
+.event-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.event-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #f08080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.event-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e2d3d;
+  margin-bottom: 2px;
+}
+
+.event-cause {
+  font-size: 14px;
+  color: #6b7f8e;
+  margin-bottom: 8px;
+}
+
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Fredoka', sans-serif;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.event-badge.green {
+  background: #7dcfa0;
+  color: #ffffff;
+}
+
+.event-badge.blue {
+  background: #d4edf8;
+  color: #4a8fb0;
+}
+
+.event-time {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.event-clock {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e2d3d;
+}
+
+.event-date {
+  display: block;
+  font-size: 13px;
+  color: #6b7f8e;
+}
+
+@media (min-width: 768px) {
+  body.wachzeiten-page .dashboard,
+  body.sensoren-page .dashboard {
+    display: block;
+  }
+
+  body.einstellungen-page .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    row-gap: 16px;
+  }
+
+  body.einstellungen-page .page-header {
+    grid-column: 1 / -1;
+  }
+
+  body.einstellungen-page .card-ruhefenster {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  body.einstellungen-page .card-geraet {
+    grid-column: 2;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  body.einstellungen-page .card-sensorlogik {
+    grid-column: 1;
+    grid-row: 3;
+    margin-bottom: 0;
+  }
+
+  body.einstellungen-page .card-konto {
+    grid-column: 2;
+    grid-row: 3;
+    margin-bottom: 0;
+  }
+}
+
+/* ═══════════════════════════════════════
+   Sensoren Page
+   ═══════════════════════════════════════ */
+
+.sensor-detail-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sensor-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.sensor-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sensor-icon-circle.bewegung { background: #a8d4e8; }
+.sensor-icon-circle.laerm   { background: #f5c842; }
+
+.sensor-info-block { flex: 1; }
+
+.sensor-detail-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e2d3d;
+  margin-bottom: 4px;
+}
+
+.sensor-detail-desc {
+  font-size: 14px;
+  color: #6b7f8e;
+  margin-bottom: 10px;
+}
+
+.sensor-divider {
+  height: 1px;
+  background: #eef3f7;
+  margin: 16px 0 0;
+}
+
+.sensor-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid #eef3f7;
+  font-size: 15px;
+  color: #6b7f8e;
+}
+
+.sensor-row-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e2d3d;
+  font-weight: 500;
+}
+
+.sensor-test-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #e8f4fb;
+  color: #5aabe0;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+}
+
+.sensor-test-btn:hover { background: #d4edf8; }
+
+/* ── Ereignislogik ── */
+.ereignis-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.ereignis-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e2d3d;
+  margin-bottom: 10px;
+}
+
+.ereignis-desc {
+  font-size: 14px;
+  color: #6b7f8e;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.ereignis-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.flow-bubble {
+  background: #d4edf8;
+  color: #5aabe0;
+  border-radius: 50px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.flow-arrow {
+  color: #9bb0be;
+  font-size: 18px;
+}
+
+.ereignis-example {
+  background: #e8f4fb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #6b7f8e;
+  text-align: center;
+}
+
+.example-label {
+  color: #5aabe0;
+  font-weight: 700;
+}
+
+/* ── Add sensor button ── */
+.add-sensor-btn {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e2d3d;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+}
+
+.add-sensor-btn:hover { background: #f5f9fc; }
+
+/* ═══════════════════════════════════════
+   Einstellungen Page
+   ═══════════════════════════════════════ */
+
+.settings-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.settings-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e2d3d;
+  margin-bottom: 6px;
+}
+
+.settings-desc {
+  font-size: 14px;
+  color: #6b7f8e;
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+/* ── Toggle switch ── */
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 15px;
+  color: #1e2d3d;
+  font-weight: 500;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #b0bec5;
+  border-radius: 14px;
+  transition: background 0.3s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.toggle input:checked + .toggle-slider { background: #5aabe0; }
+.toggle input:checked + .toggle-slider::before { transform: translateX(22px); }
+
+/* ── Time fields ── */
+.time-field-label {
+  font-size: 14px;
+  color: #6b7f8e;
+  margin-bottom: 8px;
+}
+
+.time-input-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.time-clock-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5aabe0;
+  pointer-events: none;
+}
+
+.time-input {
+  width: 100%;
+  padding: 16px 16px 16px 46px;
+  border-radius: 14px;
+  border: none;
+  background: #e8f4fb;
+  font-size: 16px;
+  font-family: 'Fredoka', sans-serif;
+  color: #5aabe0;
+  outline: none;
+}
+
+.settings-note {
+  font-size: 13px;
+  color: #9bb0be;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+/* ── Sensorlogik rows ── */
+.settings-rows { margin-bottom: 0; }
+
+.settings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eef3f7;
+  font-size: 15px;
+}
+
+.settings-rows .settings-row:last-child { border-bottom: none; }
+.settings-row-label { color: #6b7f8e; }
+.settings-row-value { color: #1e2d3d; font-weight: 500; }
+
+/* ── Testalarm button ── */
+.testalarm-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 14px;
+  background: #e8f4fb;
+  color: #5aabe0;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.testalarm-btn:hover { background: #d4edf8; }
+
+/* ── Settings list items ── */
+.settings-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 14px;
+  background: #e8f4fb;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Fredoka', sans-serif;
+  color: #1e2d3d;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.settings-item:last-child { margin-bottom: 0; }
+.settings-item:hover { background: #d4edf8; }
+
+.settings-item.danger {
+  background: #f4a090;
+  color: #ffffff;
+}
+
+.settings-item.danger:hover { background: #f09080; }

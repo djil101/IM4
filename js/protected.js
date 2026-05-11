@@ -21,10 +21,9 @@ async function checkAuth() {
     const greetingEl = document.getElementById("greeting");
     if (greetingEl) {
       greetingEl.textContent = `${salutation}, ${result.name}`;
-      attachLogout();
-      return true;
     }
 
+    attachLogout();
     return true;
 
   } catch (error) {

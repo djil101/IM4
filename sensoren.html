@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NestSignal – Sensoren</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="dashboard-page sensoren-page">
+
+    <div class="dashboard">
+
+      <!-- Header -->
+      <div class="page-header">
+        <h1 class="page-title">Sensoren</h1>
+        <p class="page-sub">Bewegung und Geräusche im Blick</p>
+      </div>
+
+      <!-- Bewegungssensor -->
+      <div class="sensor-detail-card">
+        <div class="sensor-header">
+          <div class="sensor-icon-circle bewegung">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="sensor-info-block">
+            <p class="sensor-detail-name">Bewegungssensor</p>
+            <p class="sensor-detail-desc">Erkennt Bewegungen am Gitterbett.</p>
+            <span class="sensor-badge">Verbunden</span>
+          </div>
+        </div>
+        <div class="sensor-divider"></div>
+        <div class="sensor-row">
+          <span>Letzte Messung</span>
+          <span class="sensor-row-value">vor 20 Sek.</span>
+        </div>
+        <div class="sensor-row">
+          <span>Batterie</span>
+          <span class="sensor-row-value">
+            <svg width="20" height="12" viewBox="0 0 22 13" fill="none">
+              <rect x="0.75" y="0.75" width="17.5" height="11.5" rx="2" stroke="#7dcfa0" stroke-width="1.5"/>
+              <rect x="2.5" y="2.5" width="12" height="8" rx="1" fill="#7dcfa0"/>
+              <path d="M19.5 4.5v4" stroke="#7dcfa0" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            87 %
+          </span>
+        </div>
+        <button class="sensor-test-btn">Verbindung testen</button>
+      </div>
+
+      <!-- Lärmsensor -->
+      <div class="sensor-detail-card">
+        <div class="sensor-header">
+          <div class="sensor-icon-circle laerm">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M11 5L6 9H2v6h4l5 4V5z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="sensor-info-block">
+            <p class="sensor-detail-name">Lärmsensor</p>
+            <p class="sensor-detail-desc">Erkennt Geräusche über der definierten Lärmschwelle.</p>
+            <span class="sensor-badge">Verbunden</span>
+          </div>
+        </div>
+        <div class="sensor-divider"></div>
+        <div class="sensor-row">
+          <span>Letzte Messung</span>
+          <span class="sensor-row-value">vor 20 Sek.</span>
+        </div>
+        <div class="sensor-row">
+          <span>Batterie</span>
+          <span class="sensor-row-value">
+            <svg width="20" height="12" viewBox="0 0 22 13" fill="none">
+              <rect x="0.75" y="0.75" width="17.5" height="11.5" rx="2" stroke="#7dcfa0" stroke-width="1.5"/>
+              <rect x="2.5" y="2.5" width="13" height="8" rx="1" fill="#7dcfa0"/>
+              <path d="M19.5 4.5v4" stroke="#7dcfa0" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            91 %
+          </span>
+        </div>
+        <button class="sensor-test-btn">Verbindung testen</button>
+      </div>
+
+      <!-- Ereignislogik -->
+      <div class="ereignis-card">
+        <h3 class="ereignis-title">Ereignislogik</h3>
+        <p class="ereignis-desc">Ein Wachereignis wird erst bestätigt, wenn in drei aufeinanderfolgenden Messungen relevante Aktivität erkannt wurde.</p>
+        <div class="ereignis-flow">
+          <div class="flow-bubble">20 Sek.</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-bubble">20 Sek.</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-bubble">20 Sek.</div>
+        </div>
+        <div class="ereignis-example">
+          <span class="example-label">Beispiel:</span> Bewegung · Lärm · Bewegung = Wachereignis bestätigt
+        </div>
+      </div>
+
+      <!-- Add Sensor -->
+      <div class="add-sensor-btn">+ &nbsp; Neuen Sensor hinzufügen</div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-item" onclick="window.location.href='protected.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Status</span>
+      </div>
+      <div class="nav-item" onclick="window.location.href='wachzeiten.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Wachzeiten</span>
+      </div>
+      <div class="nav-item active">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="20" r="1" fill="currentColor"/>
+        </svg>
+        <span>Sensoren</span>
+      </div>
+      <div class="nav-item" onclick="window.location.href='einstellungen.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Einstellungen</span>
+      </div>
+    </nav>
+
+    <script src="js/protected.js"></script>
+  </body>
+</html>
