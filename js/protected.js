@@ -1,29 +1,31 @@
+// protected.js
 async function checkAuth() {
   try {
-    const response = await fetch("/api/protected.php", {
+    const response = await fetch("api/protected.php", {
       credentials: "include",
     });
 
     if (response.status === 401) {
-      window.location.href = "/login.html";
+      window.location.href = "login.html";
       return false;
     }
 
     const result = await response.json();
 
-    // Display user data in the protected content div
-    document.getElementById("userEmail").textContent = result.email;
-    document.getElementById("userId").textContent = result.user_id;
-    document.getElementById("userVorname").textContent = result.vorname;
-    document.getElementById("userNachname").textContent = result.nachname; 
+    const hour = new Date().getHours();
+    let salutation;
+    if (hour < 12) salutation = "Guten Morgen";
+    else if (hour < 18) salutation = "Guten Tag";
+    else salutation = "Guten Abend";
+
+    const greetingEl = document.getElementById("greeting");
+    if (greetingEl) greetingEl.textContent = `${salutation}, ${result.name}`;
 
     return true;
   } catch (error) {
     console.error("Auth check failed:", error);
-    window.location.href = "/login.html";
     return false;
   }
 }
 
-// Check auth when page loads
 window.addEventListener("load", checkAuth);

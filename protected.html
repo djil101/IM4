@@ -1,24 +1,129 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>Protected Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NestSignal</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <h1>Protected Page</h1>
+  <body class="dashboard-page">
 
-    <!-- This is where we'll dynamically show the protected content -->
-    <div id="protectedContent">
-      <h2>Willkommen, 
-      <span id="userVorname"></span> 
-      <span id="userNachname"></span>!
-    </h2>
-    <p>Deine E-Mail: <span id="userEmail"></span></p>
-    <p>Deine User-ID: <span id="userId"></span></p>
+    <div class="dashboard">
+
+      <!-- Greeting -->
+      <div class="greeting-section">
+        <h2 class="greeting" id="greeting">Hallo!</h2>
+        <p class="greeting-sub">Dein kleiner Storch schläft friedlich.</p>
+      </div>
+
+      <!-- Hero Card -->
+      <div class="hero-card">
+        <div class="hero-sky">
+          <div class="hero-bird">🦢</div>
+        </div>
+        <div class="hero-bottom">
+          <h2 class="hero-title">Im Nest ist alles ruhig</h2>
+          <p class="hero-sub">Bewegungs- und Lärmsensor sind aktiv.</p>
+        </div>
+      </div>
+
+      <!-- Action Cards -->
+      <div class="action-grid">
+        <div class="action-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" stroke="#e07878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="16 7 22 7 22 13" stroke="#e07878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="action-label">Wachzeiten ansehen</span>
+        </div>
+        <div class="action-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="#f5b942" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="#f5b942" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="#f5b942" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="12" cy="20" r="1.2" fill="#f5b942"/>
+          </svg>
+          <span class="action-label">Sensoren prüfen</span>
+        </div>
+        <div class="action-card">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#5aabe0" stroke-width="2.5"/>
+            <polyline points="12 6 12 12 16 14" stroke="#5aabe0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="action-label">Ruhefenster anpassen</span>
+        </div>
+      </div>
+
+      <!-- Auf einen Blick -->
+      <div class="info-card">
+        <h3 class="card-title">Auf einen Blick</h3>
+        <div class="info-row">
+          <span class="info-label">Letzte Wachzeit</span>
+          <span class="info-value">Heute, 07:30</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Letztes Signal</span>
+          <span class="info-value">Bewegung</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Ruhefenster</span>
+          <span class="info-value">10:00 bis 19:00</span>
+        </div>
+      </div>
+
+      <!-- Sensorstatus -->
+      <div class="sensor-card">
+        <h3 class="card-title">Sensorstatus</h3>
+        <div class="sensor-item">
+          <p class="sensor-name">Bewegungssensor</p>
+          <p class="sensor-desc">Aktiv · letzte Messung vor 20 Sek.</p>
+          <span class="sensor-badge">Verbunden</span>
+        </div>
+        <div class="sensor-item">
+          <p class="sensor-name">Lärmsensor</p>
+          <p class="sensor-desc">Aktiv · letzte Messung vor 20 Sek.</p>
+          <span class="sensor-badge">Verbunden</span>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <button id="logoutBtn" class="logout-btn">Abmelden</button>
+
     </div>
 
-    <button id="logoutBtn">Logout</button>
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-item active">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Status</span>
+      </div>
+      <div class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Wachzeiten</span>
+      </div>
+      <div class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="20" r="1" fill="currentColor"/>
+        </svg>
+        <span>Sensoren</span>
+      </div>
+      <div class="nav-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span>Einstellungen</span>
+      </div>
+    </nav>
 
     <script src="js/protected.js"></script>
     <script src="js/logout.js"></script>
