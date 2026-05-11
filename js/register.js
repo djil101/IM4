@@ -15,7 +15,12 @@ document
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password, vorname, nachname }),
+        body: JSON.stringify({ 
+          email, 
+          password,
+          vorname:  document.getElementById("vorname").value.trim(),
+          nachname: document.getElementById("nachname").value.trim()
+        }),
       });
       const result = await response.json();
 
