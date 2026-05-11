@@ -1,35 +1,141 @@
-/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  max-width: 600px;
-  line-height: 1.5;
+  min-height: 100vh;
+  background-color: #b8dcef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  padding: 40px 16px;
 }
 
-h1 {
-  margin-bottom: 1em;
+/* ── Card ── */
+.card {
+  width: 100%;
+  max-width: 520px;
+  padding: 56px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-form > div {
-  margin-bottom: 1em;
+/* ── Logo ── */
+.logo-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #a8d4e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
 }
 
-label {
+.logo-circle svg {
+  width: 60px;
+  height: 60px;
+}
+
+/* ── Title & tagline ── */
+.app-name {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1e2d3d;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 20px;
+  color: #6b7f8e;
+  margin-bottom: 40px;
+}
+
+/* ── Form ── */
+form {
+  width: 100%;
+}
+
+.field-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.field-group label {
+  display: block;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1e2d3d;
+  margin-bottom: 10px;
+}
+
+.field-group input {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 18px;
+  font-family: 'Fredoka', sans-serif;
+  color: #1e2d3d;
+  outline: none;
+  appearance: none;
+}
+
+.field-group input::placeholder {
+  color: #b0bec5;
+}
+
+/* ── Forgot password link ── */
+.forgot-link {
   display: inline-block;
-  width: 80px;
+  margin-top: 4px;
+  margin-bottom: 24px;
+  font-size: 18px;
+  color: #5aabe0;
+  text-decoration: none;
 }
 
-input[type="email"],
-input[type="password"] {
-  width: 200px;
-  padding: 4px;
-}
-
-button {
-  padding: 8px 16px;
+/* ── Buttons ── */
+.btn-login,
+.btn-register {
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 14px;
+  background-color: #5aabe0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Fredoka', sans-serif;
   cursor: pointer;
+  margin-bottom: 28px;
 }
 
-p {
-  margin-top: 1em;
+.btn-login:hover,
+.btn-register:hover {
+  background-color: #4a9bd0;
+}
+
+.btn-register {
+  margin-top: 4px;
+}
+
+/* ── Bottom link ── */
+.bottom-link {
+  font-size: 19px;
+  color: #1e2d3d;
+  text-align: center;
+}
+
+.bottom-link a {
+  color: #5aabe0;
+  text-decoration: none;
 }

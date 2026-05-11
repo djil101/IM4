@@ -6,8 +6,13 @@ document
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
-    const vorname = document.getElementById("vorname").value.trim();
-    const nachname = document.getElementById("nachname").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const name = document.getElementById("name").value.trim();
+
+    if (password !== confirmPassword) {
+      alert("Bitte das gleiche Passwort eingeben");
+      return;
+    }
 
     try {
       const response = await fetch("api/register.php", {
@@ -15,12 +20,7 @@ document
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ 
-          email, 
-          password,
-          vorname:  document.getElementById("vorname").value.trim(),
-          nachname: document.getElementById("nachname").value.trim()
-        }),
+        body: JSON.stringify({ email, password, name }),
       });
       const result = await response.json();
 

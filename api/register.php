@@ -8,15 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = json_decode(file_get_contents("php://input"), true);
 
-    $email     = trim($data['email']     ?? '');
-    $password  = trim($data['password']  ?? '');
-    $vorname   = trim($data['vorname']   ?? '');
-    $nachname  = trim($data['nachname']  ?? '');
+    $email    = trim($data['email']    ?? '');
+    $password = trim($data['password'] ?? '');
+    $name     = trim($data['name']     ?? '');
 
-    if (!$email || !$password || !$vorname || !$nachname) {
-    echo json_encode(["status" => "error", "message" => "Alle Felder sind erforderlich"]);
-    exit;
-}
+    if (!$email || !$password || !$name) {
+        echo json_encode(["status" => "error", "message" => "Alle Felder sind erforderlich"]);
+        exit;
+    }
 
     $stmt = $pdo->prepare("SELECT id FROM users WHERE email = :email");
     $stmt->execute([':email' => $email]);
@@ -27,16 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // vorname + nachname hinzugefügt
     $insert = $pdo->prepare("
-        INSERT INTO users (email, password, vorname, nachname)
-        VALUES (:email, :pass, :vorname, :nachname)
+        INSERT INTO users (email, password, name)
+        VALUES (:email, :pass, :name)
     ");
     $insert->execute([
-        ':email'    => $email,
-        ':pass'     => $hashedPassword,
-        ':vorname'  => $vorname,
-        ':nachname' => $nachname
+        ':email' => $email,
+        ':pass'  => $hashedPassword,
+        ':name'  => $name,
     ]);
 
     echo json_encode(["status" => "success"]);
