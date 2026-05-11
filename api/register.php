@@ -4,13 +4,12 @@ header('Content-Type: application/json');
 
 require_once '../system/config.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
-echo json_encode(["debug" => $data]);
-exit;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $data = json_decode(file_get_contents("php://input"), true);
+
+     echo json_encode(["debug" => $data]);
+    exit;
 
     $email     = trim($data['email']     ?? '');
     $password  = trim($data['password']  ?? '');
