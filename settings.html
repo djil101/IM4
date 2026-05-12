@@ -13,18 +13,18 @@
       <!-- Header -->
       <div class="page-header">
         <h1 class="page-title">Einstellungen</h1>
-        <p class="page-sub">Passe Sensoren und Ruhezeiten an.</p>
+        <p class="page-sub">Passe Sensoren und Benachrichtigungen an.</p>
       </div>
 
-      <!-- Ruhefenster -->
+      <!-- Benachrichtigungen -->
       <div class="settings-card card-ruhefenster">
-        <h3 class="settings-title">Ruhefenster</h3>
+        <h3 class="settings-title">Benachrichtigungen einstellen</h3>
         <p class="settings-desc">Lege fest, in welchem Zeitraum keine Push-Benachrichtigungen versendet werden.</p>
 
         <div class="toggle-row">
           <span>Ruhefenster aktivieren</span>
           <label class="toggle">
-            <input type="checkbox" checked>
+            <input type="checkbox" id="notificationsEnabled" checked>
             <span class="toggle-slider"></span>
           </label>
         </div>
@@ -35,7 +35,7 @@
             <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
             <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <input type="time" class="time-input">
+          <input type="time" class="time-input" id="quietFrom">
         </div>
 
         <p class="time-field-label">Bis</p>
@@ -44,10 +44,13 @@
             <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
             <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <input type="time" class="time-input">
+          <input type="time" class="time-input" id="quietUntil">
         </div>
 
         <p class="settings-note">Wachereignisse werden in dieser Zeit gespeichert, aber nicht als Push-Benachrichtigung verschickt.</p>
+
+        <button class="btn-save" id="saveBtn">Speichern</button>
+        <p class="save-feedback" id="saveFeedback"></p>
       </div>
 
       <!-- Sensorlogik -->
@@ -164,5 +167,6 @@
     </nav>
 
     <script src="js/protected.js"></script>
+    <script src="js/settings.js"></script>
   </body>
 </html>
