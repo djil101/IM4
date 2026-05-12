@@ -41,7 +41,8 @@ async function checkAdmin() {
 
     if (data.is_admin) {
       document.getElementById("familyCard").style.display = "block";
-    }
+      document.getElementById("familyNameDisplay").textContent = data.family_name ?? "";
+}
   } catch (err) {
     console.error("Admin-Check fehlgeschlagen:", err);
   }
