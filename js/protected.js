@@ -21,9 +21,10 @@ async function checkAuth() {
     const greetingEl = document.getElementById("greeting");
     if (greetingEl) {
       greetingEl.textContent = `${salutation}, ${result.name}`;
+      attachLogout();
+      return true;
     }
 
-    attachLogout();
     return true;
 
   } catch (error) {
@@ -40,6 +41,25 @@ function attachLogout() {
     await fetch("api/logout.php", { credentials: "include" });
     window.location.href = "login.html";
   });
+}
+
+async function loadNotificationStatus() {
+  try {
+    const res = await fetch("api/settings_get.php", {
+      credentials: "include",
+    });
+    const data = await res.json();
+    const el = document.getElementById("notificationStatus");
+    if (!el) return;
+
+    if (!data.enabled || !data.quiet_from || !data.quiet_until) {
+      el.textContent = "Immer aktiv";
+    } else {
+      el.textContent = `${data.quiet_from.slice(0,5)} bis ${data.quiet_until.slice(0,5)}`;
+    }
+  } catch (err) {
+    console.error("Benachrichtigungsstatus konnte nicht geladen werden:", err);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", checkAuth);
