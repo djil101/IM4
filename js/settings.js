@@ -215,6 +215,11 @@ nameInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") nameSaveBtn.click();
 });
 
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await fetch("api/logout.php", { method: "POST", credentials: "include" });
+  window.location.href = "login.html";
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   loadSettings();
   checkAdmin();

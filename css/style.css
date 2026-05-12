@@ -670,21 +670,33 @@ body.dashboard-page {
   grid-column: 1;
   grid-row: 2;
   margin-bottom: 0;
+  align-self: stretch;
 }
 
-body.einstellungen-page .card-familie {
+body.einstellungen-page .settings-right-col {
   grid-column: 2;
   grid-row: 2;
-  margin-bottom: 0;
-  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: stretch;
 }
 
-body.einstellungen-page .card-konto {
-  grid-column: 2;
-  grid-row: 3;
+body.einstellungen-page .settings-right-col .settings-card {
   margin-bottom: 0;
-  align-self: start;
 }
+
+body.einstellungen-page .settings-right-col .card-konto {
+  flex: 1;
+}
+}
+
+.card-familie .field-group input {
+  background-color: #e8f4fb;
+}
+
+.card-familie .field-group input::placeholder {
+  color: #5aabe0;
 }
 
 /* ═══════════════════════════════════════
@@ -1106,8 +1118,8 @@ body.einstellungen-page .card-konto {
 .save-feedback {
   text-align: center;
   font-size: 15px;
-  margin-top: 10px;
-  min-height: 20px;
+  margin-top: 4px;
+  min-height: 12px;
 }
 
 /* ── Sensorlogik rows ── */
@@ -1130,7 +1142,7 @@ body.einstellungen-page .card-konto {
 .testalarm-btn {
   width: 100%;
   padding: 16px;
-  margin-top: 16px;
+  margin-top: 8px;
   border: none;
   border-radius: 14px;
   background: #e8f4fb;
