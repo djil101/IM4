@@ -63,3 +63,4 @@ async function loadNotificationStatus() {
 }
 
 document.addEventListener("DOMContentLoaded", checkAuth);
+document.addEventListener("DOMContentLoaded", loadNotificationStatus);

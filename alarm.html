@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NestSignal – Alarm</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <div class="alarm-wrapper">
+
+      <!-- Bird illustration — place your image at img/nest-bird.png on the server -->
+      <img src="img/nest-bird.png" alt="Baby Storch im Nest" class="alarm-bird-img">
+
+      <h1 class="alarm-title">Dein Kind ist wach.</h1>
+      <p class="alarm-subtitle">Wiederholte Aktivität im Gitterbett erkannt.</p>
+
+      <p class="alarm-time" id="alarmTime">--:--</p>
+      <p class="alarm-meta">3 Signale in Folge bestätigt · Messintervall 20 Sek.</p>
+
+      <button class="alarm-btn-primary" onclick="window.location.href='protected.html'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <polyline points="20 6 9 17 4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Ich gehe nachsehen
+      </button>
+
+      <button class="alarm-btn-secondary" onclick="window.location.href='protected.html'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Später erinnern
+      </button>
+
+      <p class="alarm-note">Einzelne Geräusche oder kurze Bewegungen lösen<br>keinen Alarm aus.</p>
+
+    </div>
+
+    <script>
+      document.getElementById('alarmTime').textContent =
+        new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+    </script>
+    <script src="js/protected.js"></script>
+  </body>
+</html>
