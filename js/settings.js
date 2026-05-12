@@ -6,7 +6,7 @@ const quietUntil  = document.getElementById("quietUntil");
 const saveBtn     = document.getElementById("saveBtn");
 const feedback    = document.getElementById("saveFeedback");
 
-// Einstellungen beim Laden der Seite aus DB holen
+// Einstellungen + Admin-Status laden
 async function loadSettings() {
   try {
     const res = await fetch("api/settings_get.php", {
@@ -23,7 +23,6 @@ async function loadSettings() {
     quietFrom.value    = data.quiet_from  ?? "";
     quietUntil.value   = data.quiet_until ?? "";
 
-    // Zeitfelder beim Laden gleich korrekt ein/ausgrauen
     const wrap = document.querySelector(".card-ruhefenster");
     if (!data.enabled) {
       wrap.classList.add("time-fields-disabled");
@@ -31,6 +30,20 @@ async function loadSettings() {
 
   } catch (err) {
     console.error("Einstellungen konnten nicht geladen werden:", err);
+  }
+}
+
+// Admin-Status prüfen → Familie-Karte anzeigen
+async function checkAdmin() {
+  try {
+    const res  = await fetch("api/protected.php", { credentials: "include" });
+    const data = await res.json();
+
+    if (data.is_admin) {
+      document.getElementById("familyCard").style.display = "block";
+    }
+  } catch (err) {
+    console.error("Admin-Check fehlgeschlagen:", err);
   }
 }
 
@@ -62,7 +75,6 @@ async function saveSettings() {
     }
 
   } catch (err) {
-    console.error("Speichern fehlgeschlagen:", err);
     feedback.textContent = "Etwas ist schiefgelaufen.";
     feedback.style.color = "#c0392b";
   } finally {
@@ -71,7 +83,7 @@ async function saveSettings() {
   }
 }
 
-// Toggle direkt speichern ohne Speichern-Button
+// Toggle direkt speichern
 toggle.addEventListener("change", async () => {
   try {
     await fetch("api/settings_save.php", {
@@ -85,14 +97,12 @@ toggle.addEventListener("change", async () => {
       }),
     });
 
-    // Zeitfelder ausgrauen wenn Toggle aus
     const wrap = document.querySelector(".card-ruhefenster");
     if (toggle.checked) {
       wrap.classList.remove("time-fields-disabled");
     } else {
       wrap.classList.add("time-fields-disabled");
     }
-
   } catch (err) {
     console.error("Toggle speichern fehlgeschlagen:", err);
   }
@@ -100,7 +110,47 @@ toggle.addEventListener("change", async () => {
 
 saveBtn.addEventListener("click", saveSettings);
 
-document.addEventListener("DOMContentLoaded", loadSettings);
+// Einladung senden
+document.getElementById("inviteBtn").addEventListener("click", async () => {
+  const email      = document.getElementById("inviteEmail").value.trim();
+  const inviteBtn  = document.getElementById("inviteBtn");
+  const inviteFb   = document.getElementById("inviteFeedback");
+
+  inviteFb.textContent = "";
+
+  if (!email) {
+    inviteFb.textContent = "Bitte eine E-Mail-Adresse eingeben.";
+    inviteFb.style.color = "#c0392b";
+    return;
+  }
+
+  inviteBtn.disabled = true;
+
+  try {
+    const res  = await fetch("api/invite_member.php", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+
+    if (data.status === "success") {
+      inviteFb.textContent = "✓ Einladung wurde gesendet!";
+      inviteFb.style.color = "#3a9e6e";
+      document.getElementById("inviteEmail").value = "";
+    } else {
+      inviteFb.textContent = data.message || "Fehler beim Senden.";
+      inviteFb.style.color = "#c0392b";
+    }
+  } catch {
+    inviteFb.textContent = "Etwas ist schiefgelaufen.";
+    inviteFb.style.color = "#c0392b";
+  } finally {
+    inviteBtn.disabled = false;
+    setTimeout(() => inviteFb.textContent = "", 4000);
+  }
+});
 
 // Profilname Modal
 const nameModal     = document.getElementById("nameModal");
@@ -109,8 +159,7 @@ const nameSaveBtn   = document.getElementById("nameSaveBtn");
 const nameCancelBtn = document.getElementById("nameCancelBtn");
 const nameFeedback  = document.getElementById("nameFeedback");
 
-// Modal öffnen – aktuellen Namen vorladen
-document.querySelector(".settings-item:not(.danger)").addEventListener("click", async () => {
+document.getElementById("editNameBtn").addEventListener("click", async () => {
   try {
     const res  = await fetch("api/protected.php", { credentials: "include" });
     const data = await res.json();
@@ -123,13 +172,11 @@ document.querySelector(".settings-item:not(.danger)").addEventListener("click", 
   nameInput.focus();
 });
 
-// Modal schliessen
 nameCancelBtn.addEventListener("click", () => nameModal.classList.remove("visible"));
 nameModal.addEventListener("click", (e) => {
   if (e.target === nameModal) nameModal.classList.remove("visible");
 });
 
-// Speichern
 nameSaveBtn.addEventListener("click", async () => {
   const name = nameInput.value.trim();
   if (!name || name.length < 2) {
@@ -163,7 +210,11 @@ nameSaveBtn.addEventListener("click", async () => {
   }
 });
 
-// Enter-Taste im Inputfeld
 nameInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") nameSaveBtn.click();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadSettings();
+  checkAdmin();
 });

@@ -13,7 +13,7 @@ if (!$token) {
 }
 
 $stmt = $pdo->prepare("
-    SELECT u.id FROM users u
+    SELECT u.id, u.family_id FROM users u
     JOIN user_sessions s ON u.id = s.user_id
     WHERE s.token = :token
 ");
@@ -26,16 +26,34 @@ if (!$user) {
     exit;
 }
 
-// Einstellungen laden
+// Device der Familie holen
+$stmt = $pdo->prepare("
+    SELECT id FROM devices WHERE family_id = :family_id LIMIT 1
+");
+$stmt->execute([':family_id' => $user['family_id']]);
+$device = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Kein Gerät verbunden → Standardwerte
+if (!$device) {
+    echo json_encode([
+        "enabled"     => true,
+        "quiet_from"  => null,
+        "quiet_until" => null,
+        "no_device"   => true
+    ]);
+    exit;
+}
+
+// Einstellungen für dieses Device laden
 $stmt = $pdo->prepare("
     SELECT enabled, quiet_from, quiet_until
     FROM notification_settings
-    WHERE user_id = :uid
+    WHERE device_id = :device_id
 ");
-$stmt->execute([':uid' => $user['id']]);
+$stmt->execute([':device_id' => $device['id']]);
 $settings = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Falls noch keine Einstellungen existieren: Standardwerte zurückgeben
+// Noch keine Einstellungen → Standardwerte
 if (!$settings) {
     echo json_encode([
         "enabled"     => true,

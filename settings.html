@@ -6,8 +6,6 @@
     <title>NestSignal – Einstellungen</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  
-</div>
   <body class="dashboard-page einstellungen-page">
 
     <div class="dashboard">
@@ -63,10 +61,29 @@
         </button>
       </div>
 
+      <!-- Familie (nur für Admins sichtbar) -->
+      <div class="settings-card card-familie" id="familyCard" style="display:none;">
+        <h3 class="settings-title">Familie</h3>
+        <p class="settings-desc">Lade Familienmitglieder ein, damit sie ebenfalls Zugriff auf NestSignal haben.</p>
+
+        <div class="field-group" style="margin-bottom: 0;">
+          <label for="inviteEmail">E-Mail-Adresse</label>
+          <input
+            type="email"
+            id="inviteEmail"
+            placeholder="familienmitglied@beispiel.ch"
+          />
+        </div>
+
+        <p class="invite-feedback" id="inviteFeedback"></p>
+
+        <button class="btn-save" id="inviteBtn">Einladung senden</button>
+      </div>
+
       <!-- Konto -->
       <div class="settings-card card-konto">
         <h3 class="settings-title">Konto</h3>
-        <button class="settings-item">
+        <button class="settings-item" id="editNameBtn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -118,23 +135,26 @@
         <span>Einstellungen</span>
       </div>
     </nav>
+
+    <!-- Modal: Profilname bearbeiten -->
     <div class="modal-overlay" id="nameModal">
-  <div class="modal-card">
-    <h3 class="modal-title">Profilname bearbeiten</h3>
-    <p class="modal-desc">Wie sollen wir dich nennen?</p>
-    <input
-      type="text"
-      id="nameInput"
-      class="modal-input"
-      placeholder="Dein Vorname"
-      maxlength="50"
-    />
-    <p class="modal-feedback" id="nameFeedback"></p>
-    <div class="modal-actions">
-      <button class="modal-btn-cancel" id="nameCancelBtn">Abbrechen</button>
-      <button class="modal-btn-save" id="nameSaveBtn">Speichern</button>
+      <div class="modal-card">
+        <h3 class="modal-title">Profilname bearbeiten</h3>
+        <p class="modal-desc">Wie sollen wir dich nennen?</p>
+        <input
+          type="text"
+          id="nameInput"
+          class="modal-input"
+          placeholder="Dein Vorname"
+          maxlength="50"
+        />
+        <p class="modal-feedback" id="nameFeedback"></p>
+        <div class="modal-actions">
+          <button class="modal-btn-cancel" id="nameCancelBtn">Abbrechen</button>
+          <button class="modal-btn-save" id="nameSaveBtn">Speichern</button>
+        </div>
+      </div>
     </div>
-  </div>
 
     <script src="js/protected.js"></script>
     <script src="js/settings.js"></script>

@@ -13,7 +13,7 @@ if (!$token) {
 }
 
 $stmt = $pdo->prepare("
-    SELECT u.id, u.email, u.name
+    SELECT u.id, u.email, u.name, u.is_admin, u.family_id
     FROM users u
     JOIN user_sessions s ON u.id = s.user_id
     WHERE s.token = :token
@@ -28,8 +28,10 @@ if (!$user) {
 }
 
 echo json_encode([
-    "status"  => "success",
-    "user_id" => $user['id'],
-    "email"   => $user['email'],
-    "name"    => $user['name'],
+    "status"    => "success",
+    "user_id"   => $user['id'],
+    "email"     => $user['email'],
+    "name"      => $user['name'],
+    "is_admin"  => (bool) $user['is_admin'],
+    "family_id" => $user['family_id'],
 ]);

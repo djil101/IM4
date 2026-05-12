@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NestSignal – Registrieren</title>
+    <title>NestSignal – Einladung annehmen</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="card">
-      <!-- Logo -->
+
       <div class="logo-circle">
         <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M30 10C22.268 10 16 16.268 16 24C16 31.732 22.268 38 30 38C33.5 38 36.7 36.68 39.14 34.5C37.1 35.14 34.9 35.2 32.7 34.5C26.4 32.5 22.5 26.4 23.5 19.9C24.2 15.3 27.1 11.6 30 10Z" fill="white"/>
@@ -18,32 +18,17 @@
       </div>
 
       <h1 class="app-name">NestSignal</h1>
-      <p class="tagline">Erstelle dein Konto</p>
+      <p class="tagline" id="inviteTagline">Einladung wird geladen…</p>
 
-      <form id="registerForm">
+      <form id="inviteForm" style="display:none;">
         <div class="field-group">
           <label for="firstName">Vorname</label>
-          <input
-            type="text"
-            id="firstName"
-            placeholder="Dein Vorname"
-            required
-          />
-        </div>
-
-        <div class="field-group">
-          <label for="lastName">Nachname</label>
-          <input
-            type="text"
-            id="lastName"
-            placeholder="Dein Nachname"
-            required
-          />
+          <input type="text" id="firstName" placeholder="Dein Vorname" required />
         </div>
 
         <div class="field-group">
           <label for="email">E-Mail</label>
-          <input type="email" id="email" placeholder="du@beispiel.ch" required />
+          <input type="email" id="email" placeholder="du@beispiel.ch" required readonly />
         </div>
 
         <div class="field-group">
@@ -58,12 +43,16 @@
 
         <div class="error-msg" id="errorMsg" role="alert"></div>
 
-        <button type="submit" class="btn-register">Konto erstellen</button>
+        <button type="submit" class="btn-register">Konto erstellen & beitreten</button>
       </form>
 
-      <p class="bottom-link">Bereits ein Konto? <a href="login.html">Einloggen</a></p>
+      <div id="invalidMsg" style="display:none; text-align:center;">
+        <p style="color:#b94a3a; font-size:16px;">Diese Einladung ist ungültig oder bereits verwendet.</p>
+        <a href="login.html" style="color:#5aabe0;">Zum Login</a>
+      </div>
+
     </div>
 
-    <script src="js/register.js"></script>
+    <script src="js/invite.js"></script>
   </body>
 </html>

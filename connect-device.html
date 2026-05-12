@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NestSignal – Gerät verbinden</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="card">
+
+      <!-- Logo -->
+      <div class="logo-circle">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10C22.268 10 16 16.268 16 24C16 31.732 22.268 38 30 38C33.5 38 36.7 36.68 39.14 34.5C37.1 35.14 34.9 35.2 32.7 34.5C26.4 32.5 22.5 26.4 23.5 19.9C24.2 15.3 27.1 11.6 30 10Z" fill="white"/>
+          <path d="M40 8 L41 11 L44 12 L41 13 L40 16 L39 13 L36 12 L39 11 Z" fill="white"/>
+          <circle cx="45" cy="20" r="1.5" fill="white"/>
+        </svg>
+      </div>
+
+      <h1 class="app-name">Gerät verbinden</h1>
+      <p class="tagline">Gib die Seriennummer deines NestSignal-Geräts ein.</p>
+
+      <div class="connect-steps">
+        <div class="connect-step">
+          <div class="step-number">1</div>
+          <p class="step-text">Schalte dein NestSignal-Gerät ein</p>
+        </div>
+        <div class="connect-step">
+          <div class="step-number">2</div>
+          <p class="step-text">Die Seriennummer findest du auf der Unterseite des Geräts</p>
+        </div>
+        <div class="connect-step">
+          <div class="step-number">3</div>
+          <p class="step-text">Gib sie unten ein und tippe auf «Verbinden»</p>
+        </div>
+      </div>
+
+      <form id="connectForm">
+        <div class="field-group">
+          <label for="serialNr">Seriennummer</label>
+          <input
+            type="text"
+            id="serialNr"
+            placeholder="z. B. NEST-0001-XXXX"
+            autocomplete="off"
+            autocapitalize="characters"
+            required
+          />
+        </div>
+
+        <div class="error-msg" id="errorMsg" role="alert"></div>
+
+        <button type="submit" class="btn-register">Verbinden</button>
+      </form>
+
+      <button class="btn-skip" id="skipBtn">Später einrichten</button>
+
+    </div>
+
+    <script src="js/connect-device.js"></script>
+  </body>
+</html>
