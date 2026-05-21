@@ -94,6 +94,44 @@ async function loadLastWakeTime() {
   }
 }
 
+// Alarm Polling – nur auf Seiten ausser alarm.html
+if (!window.location.pathname.includes("alarm.html")) {
+
+  let lastKnownEventId = parseInt(localStorage.getItem("lastWakeEventId") ?? "0");
+
+  async function checkForNewAlarm() {
+    try {
+      const res  = await fetch("api/wachzeiten_get.php", { credentials: "include" });
+      const data = await res.json();
+
+      if (!data.events || data.events.length === 0) return;
+
+      const latestId = data.events[0].id;
+
+      if (lastKnownEventId === 0) {
+        // Erster Aufruf – nur merken, nicht weiterleiten
+        lastKnownEventId = latestId;
+        localStorage.setItem("lastWakeEventId", latestId);
+        return;
+      }
+
+      if (latestId > lastKnownEventId) {
+        lastKnownEventId = latestId;
+        localStorage.setItem("lastWakeEventId", latestId);
+        window.location.href = "alarm.html";
+      }
+
+    } catch (err) {
+      console.error("Alarm-Check fehlgeschlagen:", err);
+    }
+  }
+
+  // Alle 20 Sekunden prüfen
+  setInterval(checkForNewAlarm, 20000);
+  // Auch direkt beim Laden einmal prüfen
+  document.addEventListener("DOMContentLoaded", checkForNewAlarm);
+}
+
 document.addEventListener("DOMContentLoaded", loadLastWakeTime);
 document.addEventListener("DOMContentLoaded", checkAuth);
 document.addEventListener("DOMContentLoaded", loadNotificationStatus);
