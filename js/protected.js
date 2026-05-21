@@ -45,11 +45,9 @@ function attachLogout() {
 
 async function loadNotificationStatus() {
   try {
-    const res = await fetch("api/settings_get.php", {
-      credentials: "include",
-    });
+    const res  = await fetch("api/settings_get.php", { credentials: "include" });
     const data = await res.json();
-    const el = document.getElementById("notificationStatus");
+    const el   = document.getElementById("notificationStatus");
     if (!el) return;
 
     if (!data.enabled || !data.quiet_from || !data.quiet_until) {
@@ -64,12 +62,9 @@ async function loadNotificationStatus() {
 
 async function loadLastWakeTime() {
   try {
-    const res  = await fetch("api/wachzeiten_get.php", {
-      credentials: "include",
-    });
+    const res  = await fetch("api/wachzeiten_get.php", { credentials: "include" });
     const data = await res.json();
-
-    const el = document.getElementById("lastWakeTime");
+    const el   = document.getElementById("lastWakeTime");
     if (!el) return;
 
     if (!data.events || data.events.length === 0) {
@@ -77,16 +72,15 @@ async function loadLastWakeTime() {
       return;
     }
 
-    const last = data.events[0];
-    const dt   = new Date(last.triggered_at);
-    const time = dt.toTimeString().slice(0, 5);
-
-    const now   = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const d     = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
-    const diff  = Math.round((today - d) / 86400000);
-
-    const dateStr = diff === 0 ? "Heute" : diff === 1 ? "Gestern" : `${dt.getDate()}. ${["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"][dt.getMonth()]}`;
+    const last    = data.events[0];
+    const dt      = new Date(last.triggered_at);
+    const time    = dt.toTimeString().slice(0, 5);
+    const now     = new Date();
+    const today   = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const d       = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+    const diff    = Math.round((today - d) / 86400000);
+    const months  = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+    const dateStr = diff === 0 ? "Heute" : diff === 1 ? "Gestern" : `${dt.getDate()}. ${months[dt.getMonth()]}`;
 
     el.textContent = `${dateStr}, ${time}`;
   } catch (err) {
@@ -94,44 +88,50 @@ async function loadLastWakeTime() {
   }
 }
 
-// Alarm Polling – nur auf Seiten ausser alarm.html
+// ── Alarm Polling ──────────────────────────────────────────
+// Nur auf Seiten ausser alarm.html ausführen
 if (!window.location.pathname.includes("alarm.html")) {
 
   let lastKnownEventId = parseInt(localStorage.getItem("lastWakeEventId") ?? "0");
 
   async function checkForNewAlarm() {
-    try {
-      const res  = await fetch("api/wachzeiten_get.php", { credentials: "include" });
-      const data = await res.json();
+  try {
+    // Snooze prüfen
+    const snoozeUntil = parseInt(localStorage.getItem("snoozeUntil") ?? "0");
+    if (Date.now() < snoozeUntil) return;
 
-      if (!data.events || data.events.length === 0) return;
+    const res  = await fetch("api/wachzeiten_get.php", { credentials: "include" });
+    const data = await res.json();
 
-      const latestId = data.events[0].id;
+    if (!data.events || data.events.length === 0) return;
 
-      if (lastKnownEventId === 0) {
-        // Erster Aufruf – nur merken, nicht weiterleiten
-        lastKnownEventId = latestId;
-        localStorage.setItem("lastWakeEventId", latestId);
-        return;
-      }
+    const latestId = data.events[0].id;
 
-      if (latestId > lastKnownEventId) {
-        lastKnownEventId = latestId;
-        localStorage.setItem("lastWakeEventId", latestId);
-        window.location.href = "alarm.html";
-      }
-
-    } catch (err) {
-      console.error("Alarm-Check fehlgeschlagen:", err);
+    if (lastKnownEventId === 0) {
+      lastKnownEventId = latestId;
+      localStorage.setItem("lastWakeEventId", latestId);
+      return;
     }
-  }
 
-  // Alle 20 Sekunden prüfen
+    if (latestId > lastKnownEventId) {
+      lastKnownEventId = latestId;
+      localStorage.setItem("lastWakeEventId", latestId);
+
+      // Ruhezeit prüfen – wenn aktiv, keinen Alarm zeigen
+      if (data.events[0].in_quiet) return;
+
+      window.location.href = "alarm.html";
+    }
+
+  } catch (err) {
+    console.error("Alarm-Check fehlgeschlagen:", err);
+  }
+}
+
   setInterval(checkForNewAlarm, 20000);
-  // Auch direkt beim Laden einmal prüfen
   document.addEventListener("DOMContentLoaded", checkForNewAlarm);
 }
 
-document.addEventListener("DOMContentLoaded", loadLastWakeTime);
 document.addEventListener("DOMContentLoaded", checkAuth);
 document.addEventListener("DOMContentLoaded", loadNotificationStatus);
+document.addEventListener("DOMContentLoaded", loadLastWakeTime);

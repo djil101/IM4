@@ -10,8 +10,7 @@
 
     <div class="alarm-wrapper">
 
-      <!-- Bird illustration — place your image at img/nest-bird.png on the server -->
-      <img src="resources/assets/storch awake_1.gif" alt="Baby Storch im Nest" class="alarm-bird-img">
+      <img src="resources/assets/storch%20awake_1.gif" alt="Baby Storch im Nest" class="alarm-bird-img">
 
       <h1 class="alarm-title">Dein Kind ist wach.</h1>
       <p class="alarm-subtitle">Wiederholte Aktivität im Gitterbett erkannt.</p>
@@ -26,7 +25,7 @@
         Ich gehe nachsehen
       </button>
 
-      <button class="alarm-btn-secondary" onclick="window.location.href='protected.html'">
+      <button class="alarm-btn-secondary" id="snoozeBtn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
           <polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -39,8 +38,15 @@
     </div>
 
     <script>
+      // Aktuelle Uhrzeit anzeigen
       document.getElementById('alarmTime').textContent =
         new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+
+      // Snooze: 10 Minuten keine Benachrichtigung
+      document.getElementById('snoozeBtn').addEventListener('click', () => {
+        localStorage.setItem('snoozeUntil', Date.now() + 10 * 60 * 1000);
+        window.location.href = 'protected.html';
+      });
     </script>
     <script src="js/protected.js"></script>
   </body>
