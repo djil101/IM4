@@ -1374,3 +1374,17 @@ body.einstellungen-page .settings-right-col .card-konto {
   margin-top: 8px;
   margin-bottom: 4px;
 }
+
+
+/* ── Sensoren Mobile Fix ── */
+@media (max-width: 600px) {
+  .sensor-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Sensoren Page Body Fix ── */
+body.sensoren-page {
+  align-items: flex-start;
+  padding: 0;
+}
