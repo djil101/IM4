@@ -11,10 +11,10 @@
 //  KONFIGURATION
 // ──────────────────────────────────────────────
 
-require_once __DIR__ . '/system/config.php';        
+require_once _DIR_ . '/../system/config.php';
 
 // ──────────────────────────────────────────────
-//  HILFSFUNKTIONEN
+
 // ──────────────────────────────────────────────
 
 header('Content-Type: application/json');
