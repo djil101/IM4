@@ -11,7 +11,7 @@
 //  KONFIGURATION
 // ──────────────────────────────────────────────
 
-require_once _DIR_ . '/../system/config.php';
+require_once '../system/config.php';
 
 // ──────────────────────────────────────────────
 
