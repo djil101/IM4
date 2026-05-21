@@ -62,5 +62,38 @@ async function loadNotificationStatus() {
   }
 }
 
+async function loadLastWakeTime() {
+  try {
+    const res  = await fetch("api/wachzeiten_get.php", {
+      credentials: "include",
+    });
+    const data = await res.json();
+
+    const el = document.getElementById("lastWakeTime");
+    if (!el) return;
+
+    if (!data.events || data.events.length === 0) {
+      el.textContent = "Keine Daten";
+      return;
+    }
+
+    const last = data.events[0];
+    const dt   = new Date(last.triggered_at);
+    const time = dt.toTimeString().slice(0, 5);
+
+    const now   = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const d     = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+    const diff  = Math.round((today - d) / 86400000);
+
+    const dateStr = diff === 0 ? "Heute" : diff === 1 ? "Gestern" : `${dt.getDate()}. ${["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"][dt.getMonth()]}`;
+
+    el.textContent = `${dateStr}, ${time}`;
+  } catch (err) {
+    console.error("Letzte Wachzeit konnte nicht geladen werden:", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadLastWakeTime);
 document.addEventListener("DOMContentLoaded", checkAuth);
 document.addEventListener("DOMContentLoaded", loadNotificationStatus);
