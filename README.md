@@ -60,6 +60,9 @@ INSERT INTO devices (serial_nr, family_id) VALUES ('NEST-0001-TEST', 1);
 3. WLAN + API-Secret in Zeilen 22–29 eintragen
 4. Hochladen → Serial Monitor (115200 Baud)
 
+<img width="1200" height="1600" alt="im02" src="https://github.com/user-attachments/assets/2d7c29e4-9652-4126-873d-386417bab3a8" />
+<img width="1200" height="1600" alt="im01" src="https://github.com/user-attachments/assets/800f460b-ff5d-498e-81ea-7970c14388c9" />
+
 ---
 
 ## Wie es funktioniert
