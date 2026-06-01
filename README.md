@@ -5,6 +5,7 @@ NestSignal ist ein Physical-Computing-Prototyp mit WebApp, der Eltern mit Kleink
 **Modul:** Interaktive Medien 4 – FH Graubünden (FS26)  
 **Team Physical Computing:** Indira Hagmann, Lorenzo Reimann  
 **Team WebApp:** Damiana Daffré, Melinda Widmer
+<img width="1080" height="1920" alt="im03" src="https://github.com/user-attachments/assets/22006076-91c7-48e7-95f9-bc5b68b4ac20" />
 
 ---
 
@@ -19,6 +20,8 @@ Herkömmliche Babyphones reagieren auf jedes kleine Geräusch und wecken Eltern 
 🔗 [https://djil.afopulax.myhostpoint.ch](https://djil.afopulax.myhostpoint.ch)  
 🎥 Video-Dokumentation: [Link ergänzen]  
 🎨 Figma: [Link zum Prototyp](https://www.figma.com/design/orPrJ2k2AYkupkEzLjqHvH/App-Konzeption_4-Gewinnt?node-id=23-533&t=qFewYKgeL5NJSKaq-1)
+<img width="6588" height="7312" alt="App-Konzeption_4 Gewinnt (1)" src="https://github.com/user-attachments/assets/66dc748d-5653-4b0e-bf7f-18135608e4b0" />
+
 
 ---
 
