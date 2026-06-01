@@ -1,6 +1,6 @@
-# NestSignal 🪺
+# NestSignal
 
-NestSignal ist ein Physical-Computing-Prototyp mit WebApp, der Eltern mit Kleinkindern dabei hilft zu erkennen, ob ihr Kind wirklich aufgewacht ist – ohne unnötige Fehlalarme.
+NestSignal ist ein Physical-Computing-Prototyp mit WebApp, der Eltern mit Kleinkindern dabei hilft zu erkennen, ob ihr Kind wirklich aufgewacht ist, ohne unnötige Fehlalarme.
 
 **Modul:** Interaktive Medien 4 – FH Graubünden (FS26)  
 **Team Physical Computing:** Indira Hagmann, Lorenzo Reimann  
@@ -78,14 +78,10 @@ Der ESP32 misst alle 20 Sekunden Bewegung und Lärm und sendet die Daten per HTT
 
 ## Reflexion
 
-**Physical Computing (Lorenzo Reimann)**
+**Physical Computing (Indira Hagmann)**
 
 Ich hätte nie gedacht, dass ich einen Microcontroller mit einer Datenbank verbinden kann. Die grösste Überraschung war, wie viel Kleinkram zwischen Hardware und Software liegt – ein falscher GPIO-Pin, ein Sonderzeichen im Passwort, ein fehlender COM-Port. Aber genau das hat mich am meisten gelernt: systematisch debuggen. Das Team hat super funktioniert.
 
 **WebApp (Damiana Daffré)**
 
 Die grösste Herausforderung war, die WebApp fertigzustellen bevor die Sensoren liefen. Viel musste mit Mock-Daten getestet werden. Den SMTP-Versand und die Token-Authentifizierung von Grund auf selbst aufzubauen war aufwändig, aber sehr lehrreich.
-
----
-
-> ⚠️ `system/config.php` niemals auf GitHub pushen – nur `config.example.php` wird versioniert.
