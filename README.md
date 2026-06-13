@@ -19,7 +19,6 @@ Herkömmliche Babyphones reagieren auf jedes kleine Geräusch und wecken Eltern 
 🎥 Video-Dokumentation: [Link ergänzen]  
 🎨 Figma: [Link zum Prototyp](https://www.figma.com/design/orPrJ2k2AYkupkEzLjqHvH/App-Konzeption_4-Gewinnt?node-id=23-533&t=qFewYKgeL5NJSKaq-1)
 <img width="6588" height="7312" alt="App-Konzeption_4 Gewinnt (1)" src="https://github.com/user-attachments/assets/66dc748d-5653-4b0e-bf7f-18135608e4b0" />
-<img width="2459" height="6508" alt="steckplan_final_uebersichtlich" src="https://github.com/user-attachments/assets/04b3cf7a-3d11-4d8d-ba77-b2639d8422f4" />
 
 
 
@@ -65,6 +64,7 @@ INSERT INTO devices (serial_nr, family_id) VALUES ('NEST-0001-TEST', 1);
 
 <img width="1200" height="1600" alt="im02" src="https://github.com/user-attachments/assets/2d7c29e4-9652-4126-873d-386417bab3a8" />
 <img width="1200" height="1600" alt="im01" src="https://github.com/user-attachments/assets/800f460b-ff5d-498e-81ea-7970c14388c9" />
+<img width="2459" height="6508" alt="steckplan_final_uebersichtlich" src="https://github.com/user-attachments/assets/04b3cf7a-3d11-4d8d-ba77-b2639d8422f4" />
 
 ---
 
