@@ -1,6 +1,3 @@
-<img width="2459" height="6508" alt="steckplan_final_uebersichtlich" src="https://github.com/user-attachments/assets/f3dd6615-b6a4-4f90-ab28-076730cc375f" />
-# NestSignal
-
 NestSignal ist ein Physical-Computing-Prototyp mit WebApp, der Eltern mit Kleinkindern dabei hilft zu erkennen, ob ihr Kind wirklich aufgewacht ist, ohne unnötige Fehlalarme.
 
 **Modul:** Interaktive Medien 4 – FH Graubünden (FS26)  
