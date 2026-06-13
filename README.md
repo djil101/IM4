@@ -1,3 +1,4 @@
+<img width="2459" height="6508" alt="steckplan_final_uebersichtlich" src="https://github.com/user-attachments/assets/f3dd6615-b6a4-4f90-ab28-076730cc375f" />
 # NestSignal
 
 NestSignal ist ein Physical-Computing-Prototyp mit WebApp, der Eltern mit Kleinkindern dabei hilft zu erkennen, ob ihr Kind wirklich aufgewacht ist, ohne unnötige Fehlalarme.
@@ -21,6 +22,8 @@ Herkömmliche Babyphones reagieren auf jedes kleine Geräusch und wecken Eltern 
 🎥 Video-Dokumentation: [Link ergänzen]  
 🎨 Figma: [Link zum Prototyp](https://www.figma.com/design/orPrJ2k2AYkupkEzLjqHvH/App-Konzeption_4-Gewinnt?node-id=23-533&t=qFewYKgeL5NJSKaq-1)
 <img width="6588" height="7312" alt="App-Konzeption_4 Gewinnt (1)" src="https://github.com/user-attachments/assets/66dc748d-5653-4b0e-bf7f-18135608e4b0" />
+<img width="2459" height="6508" alt="steckplan_final_uebersichtlich" src="https://github.com/user-attachments/assets/04b3cf7a-3d11-4d8d-ba77-b2639d8422f4" />
+
 
 
 ---
