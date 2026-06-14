@@ -30,15 +30,15 @@ Herkömmliche Babyphones reagieren auf jedes kleine Geräusch und wecken Eltern 
 ### WebApp
 
 1. Repository klonen
-2. `system/config.php` erstellen (Vorlage: `system/config.example.php`)
-3. SQL-Datei `database/migration.sql` in phpMyAdmin importieren
-4. PHPMailer in `phpmailer/` ablegen
-5. Dateien per SFTP auf Webserver hochladen
-6. Testgerät in phpMyAdmin eintragen:
+2. system/config.php erstellen (Vorlage: system/config.example.php)
+3. SQL-Datei database/migration.sql in phpMyAdmin importieren
+4. Dateien per SFTP auf Webserver hochladen
+5. Testgerät in phpMyAdmin eintragen:
 ```sql
 INSERT INTO families (name) VALUES ('Testfamilie');
 INSERT INTO devices (serial_nr, family_id) VALUES ('NEST-0001-TEST', 1);
 ```
+Hinweis zum E-Mail-Versand: Familien-Einladungen werden über die native mail()-Funktion von PHP verschickt. Es muss keine zusätzliche Library (z. B. PHPMailer) installiert werden, der Versand funktioniert direkt über den Mailserver von Hostpoint.
 
 ### Physical Computing
 
@@ -91,4 +91,4 @@ Ich hätte nie gedacht, dass ich einen Microcontroller mit einer Datenbank verbi
 
 **WebApp (Damiana Daffré)**
 
-Die grösste Herausforderung war, die WebApp fertigzustellen bevor die Sensoren liefen. Viel musste mit Mock-Daten getestet werden. Den SMTP-Versand und die Token-Authentifizierung von Grund auf selbst aufzubauen war aufwändig, aber sehr lehrreich.
+Die grösste Herausforderung war, die WebApp fertigzustellen bevor die Sensoren liefen. Viel musste mit Mock-Daten getestet werden. Der E-Mail-Versand, zuerst über SMTP/PHPMailer versucht, dann bewusst auf PHPs natives mail() umgestellt, weil SMTP auf Hostpoint nicht zuverlässig lief, und die Token-Authentifizierung von Grund auf selbst aufzubauen war aufwändig, aber sehr lehrreich.
