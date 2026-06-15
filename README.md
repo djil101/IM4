@@ -17,7 +17,7 @@ Herkömmliche Babyphones reagieren auf jedes kleine Geräusch und wecken Eltern 
 ## WebApp
 
 🔗 [https://djil.afopulax.myhostpoint.ch](https://djil.afopulax.myhostpoint.ch)  
-🎥 Video-Dokumentation: [Link ergänzen]  
+🎥 Video-Dokumentation: https://youtu.be/INYG_yO_5Sc    
 🎨 Figma: [Link zum Prototyp](https://www.figma.com/design/orPrJ2k2AYkupkEzLjqHvH/App-Konzeption_4-Gewinnt?node-id=23-533&t=qFewYKgeL5NJSKaq-1)
 <img width="6588" height="7312" alt="App-Konzeption_4 Gewinnt (1)" src="https://github.com/user-attachments/assets/66dc748d-5653-4b0e-bf7f-18135608e4b0" />
 
